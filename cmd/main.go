@@ -20,7 +20,10 @@ func main() {
 		Endpoint: ouid.DefaultURL,
 	}
 	ctx := context.Background()
-	err := ouid.Process(ctx, ouid.All(cfg), func(org ouid.Organization, err error) error {
+	city := ouid.ByCity("dallas")
+	active := ouid.ByActive(true)
+	and := ouid.And(city, active)
+	err := ouid.Process(ctx, cfg.Request(and), func(org ouid.Organization, err error) error {
 		fmt.Printf("%v\n", org)
 		return nil
 	})

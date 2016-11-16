@@ -5,6 +5,7 @@ import (
 	"encoding/xml"
 	"io"
 	"net/http"
+	"net/url"
 
 	"github.com/jpfielding/gominidom/minidom"
 
@@ -30,16 +31,28 @@ type Config struct {
 	Decoder  func(io.Reader, bool) *xml.Decoder
 }
 
-// All requests all Organizations from the endpoint
-func All(cfg Config) Requester {
+// Scoper limits the scope of the Requester
+type Scoper func(url.Values) error
+
+// Request requests all Organizations from the endpoint
+func (cfg *Config) Request(scoper Scoper) Requester {
 	return func(ctx context.Context) (io.ReadCloser, error) {
-		req, err := http.NewRequest("GET", cfg.Endpoint, nil)
+		url, err := url.Parse(cfg.Endpoint)
+		if err != nil {
+			return nil, err
+		}
+		values := url.Query()
+		err = scoper(values)
+		if err != nil {
+			return nil, err
+		}
+		url.RawQuery = values.Encode()
+		req, err := http.NewRequest("GET", url.String(), nil)
 		if err != nil {
 			return nil, err
 		}
 		resp, err := ctxhttp.Do(ctx, cfg.HTTP, req)
 		return DefaultReEncodeReader(resp.Body, resp.Header.Get(ContentType)), nil
-		// return res.Body, err
 	}
 }
 
