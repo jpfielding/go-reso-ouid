@@ -19,7 +19,7 @@ package ouid
 type Organization struct {
 	Name     string    `xml:"name" json:"name"`
 	OuID     string    `xml:ouid" json:"ouid"`
-	Active   bool      `xml:"active" json"active"`
+	Active   bool      `xml:"active" json"active"` // TODO need to marshal to int
 	Notes    string    `xml:"notes,omitempty" json:"notes,omitempty"`
 	Location *Location `xml:"location,omitempty" json:"location,omitempty"`
 }
