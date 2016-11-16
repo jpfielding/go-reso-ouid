@@ -20,10 +20,11 @@ func main() {
 		Endpoint: ouid.DefaultURL,
 	}
 	ctx := context.Background()
-	city := ouid.ByCity("dallas")
-	active := ouid.ByActive(true)
-	and := ouid.And(city, active)
-	err := ouid.Process(ctx, cfg.Request(and), func(org ouid.Organization, err error) error {
+	scope := ouid.All()
+	// city := ouid.ByCity("dallas")
+	// active := ouid.ByActive(true)
+	// scope := ouid.And(all, city, active)
+	err := ouid.Process(ctx, cfg.Request(scope), func(org ouid.Organization, err error) error {
 		fmt.Printf("%v\n", org)
 		return nil
 	})
