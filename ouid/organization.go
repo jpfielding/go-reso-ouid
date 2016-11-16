@@ -1,0 +1,33 @@
+package ouid
+
+// <organization>
+//   <name>Magnolia Board Of Realtors</name>
+//   <ouid>A00000068</ouid>
+//   <active>0</active>
+//   <notes>Merged with El Dorado</notes>
+//   <location>
+//     <address>
+//     105 West Calhoun
+//     </address>
+//     <city>Magnolia</city>
+//     <state>AR</state>
+//     <zip>71753</zip>
+//   </location>
+// </organization>
+
+// Organization defines the basic identity of a RESO organization
+type Organization struct {
+	Name     string    `xml:"name" json:"name"`
+	OuID     string    `xml:ouid" json:"ouid"`
+	Active   bool      `xml:"active" json"active"`
+	Notes    string    `xml:"notes,omitempty" json:"notes,omitempty"`
+	Location *Location `xml:"location,omitempty" json:"location,omitempty"`
+}
+
+// Location is where its located
+type Location struct {
+	Address string `xml:"address,omitempty" json:"address,omitempty"`
+	City    string `xml:"city,omitempty" json:"city,omitempty"`
+	State   string `xml:"state,omitempty" json:"state,omitempty"`
+	Zip     string `xml:"zip,omitempty" json:"zip,omitempty"`
+}
