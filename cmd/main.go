@@ -52,7 +52,7 @@ func main() {
 	case "xml":
 		xml.NewEncoder(out).Encode(&orgs)
 	default:
-		raw, err := json.Marshal(&orgs)
+		raw, err := json.Marshal(&orgs.Organization)
 		if err != nil {
 			panic(err)
 		}

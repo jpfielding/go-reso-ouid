@@ -19,7 +19,7 @@ import "encoding/xml"
 
 // Organizations is a simple wrapper for collecting Organizations
 type Organizations struct {
-	XMLName      xml.Name       `xml:"organizations"`
+	XMLName      xml.Name       `xml:"organizations,omitempty"`
 	Organization []Organization `xml:"organization" json:"organization"`
 }
 
