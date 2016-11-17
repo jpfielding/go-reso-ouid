@@ -7,7 +7,11 @@ install:
   - unzip glide.zip
   - export PATH=$PATH:$PWD/linux-386/
 
+after_success:
+  - git clone git@github.com:$USER/reso-ouid.git
+  - go run cmd/main.go -filename reso-ouid/organizations.json
+  - cd reso-ouid && git commit -am "travis auto update" && git push
+  
 go:
   - 1.7
   - tip
-
