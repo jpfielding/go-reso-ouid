@@ -15,10 +15,15 @@ package ouid
 //   </location>
 // </organization>
 
+// Organizations is a simple wrapper for collecting Organizations
+type Organizations struct {
+	Organization []Organization `xml:"organization" json:"organization"`
+}
+
 // Organization defines the basic identity of a RESO organization
 type Organization struct {
 	Name     string    `xml:"name" json:"name"`
-	OuID     string    `xml:ouid" json:"ouid"`
+	OuID     string    `xml:"ouid" json:"ouid"`
 	Active   bool      `xml:"active" json"active"` // TODO need to marshal to int
 	Notes    string    `xml:"notes,omitempty" json:"notes,omitempty"`
 	Location *Location `xml:"location,omitempty" json:"location,omitempty"`
