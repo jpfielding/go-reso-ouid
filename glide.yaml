@@ -13,6 +13,7 @@ import:
     subpackages:
     - /context/ctxhttp
     - /html/charset
+    - /proxy
   - package: golang.org/x/text
     ref:     5ee49cfe751141f8017047bab800d1f528ee3be1
     subpackages:
