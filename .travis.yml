@@ -6,11 +6,6 @@ install:
   - wget https://github.com/Masterminds/glide/releases/download/v0.11.1/glide-v0.11.1-linux-386.zip -O glide.zip
   - unzip glide.zip
   - export PATH=$PATH:$PWD/linux-386/
-
-after_success:
-  - git clone git@github.com:$USER/reso-ouid.git
-  - go run cmd/main.go -filename reso-ouid/organizations.json
-  - cd reso-ouid && git commit -am "travis auto update" && git push
   
 go:
   - 1.7
