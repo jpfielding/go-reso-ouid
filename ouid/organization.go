@@ -1,6 +1,9 @@
 package ouid
 
-import "encoding/xml"
+import (
+	"encoding/xml"
+	"strings"
+)
 
 // <organization>
 //   <name>Magnolia Board Of Realtors</name>
@@ -30,7 +33,7 @@ func (o Organizations) Swap(i, j int) {
 	o.Organization[i], o.Organization[j] = o.Organization[j], o.Organization[i]
 }
 func (o Organizations) Less(i, j int) bool {
-	return o.Organization[i].Name < o.Organization[j].Name
+	return strings.TrimSpace(o.Organization[i].Name) < strings.TrimSpace(o.Organization[j].Name)
 }
 
 // Organization defines the basic identity of a RESO organization
