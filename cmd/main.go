@@ -8,6 +8,7 @@ import (
 	"flag"
 	"net/http"
 	"os"
+	"sort"
 	"strings"
 
 	"github.com/jpfielding/go-reso-ouid/ouid"
@@ -42,6 +43,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	sort.Sort(orgs)
 	out := os.Stdout
 	if *output != "" {
 		out, _ = os.Create(*output)

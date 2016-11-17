@@ -23,6 +23,16 @@ type Organizations struct {
 	Organization []Organization `xml:"organization" json:"organization"`
 }
 
+func (o Organizations) Len() int {
+	return len(o.Organization)
+}
+func (o Organizations) Swap(i, j int) {
+	o.Organization[i], o.Organization[j] = o.Organization[j], o.Organization[i]
+}
+func (o Organizations) Less(i, j int) bool {
+	return o.Organization[i].Name < o.Organization[j].Name
+}
+
 // Organization defines the basic identity of a RESO organization
 type Organization struct {
 	Name     string    `xml:"name" json:"name"`
