@@ -1,5 +1,7 @@
 package ouid
 
+import "encoding/xml"
+
 // <organization>
 //   <name>Magnolia Board Of Realtors</name>
 //   <ouid>A00000068</ouid>
@@ -17,6 +19,7 @@ package ouid
 
 // Organizations is a simple wrapper for collecting Organizations
 type Organizations struct {
+	XMLName      xml.Name       `xml:"organizations"`
 	Organization []Organization `xml:"organization" json:"organization"`
 }
 
