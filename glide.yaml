@@ -1,8 +1,9 @@
-package: github.com/jpfielding/go-reso-ouid
-homepage: github.com/jpfielding/go-reso-ouid
+package: github.com/jpfielding/reso-ouid
+homepage: github.com/jpfielding/reso-ouid
 license: GPL3
 
 import:
+  - package: github.com/jpfielding/go-reso-ouid
   - package: github.com/jpfielding/gominidom
   - package: github.com/jpfielding/gofilters
   - package: github.com/jpfielding/gotest
