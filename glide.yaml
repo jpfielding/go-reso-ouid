@@ -1,5 +1,5 @@
-package: github.com/jpfielding/reso-ouid
-homepage: github.com/jpfielding/reso-ouid
+package: github.com/jpfielding/go-reso-ouid
+homepage: github.com/jpfielding/o-reso-ouid
 license: GPL3
 
 import:
